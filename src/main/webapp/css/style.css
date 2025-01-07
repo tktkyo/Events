@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.eventh1{
+    font-style: oblique;
+    color: rgb(4, 94, 64);
+}
+
+eventh2{
+    box-shadow: 2px 2px 5px rgba(175, 240, 159, 0.5);
+    color: rgb(13, 77, 24);
+    font-weight: normal;
+}
+
+h3{
+    color: rgb(4, 194, 194);
+}
+
+
+th{
+    color: rgb(163, 163, 231);
+}
+
+.loginh1{
+    color:rgb(25, 109, 109);
+    text-shadow:30cap;
+    font-weight: 400;
+}
+.login_title{
+    color: rgb(5, 151, 103);
+}
+.loginh2{
+    color: rgb(3, 138, 93)
+}
+.loginp1{
+    color: rgb(5, 129, 88);
+}
+.alert{
+    color: rgb(5, 160, 108);
+}
+.btn{
+    color: rgb(3, 107, 47);
+    background-color: rgb(165, 219, 172);
+}
+
+.logouth1{
+    color: rgb(5, 131, 89);
+    font-weight: 400;
+}
+
+.logouth2{
+    color: rgb(3, 141, 141);
+}
+
