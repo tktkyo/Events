@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 			// ユーザーID が正しい場合
 			HttpSession session = request.getSession();
 			session.setAttribute("login", true);
-			response.sendRedirect("userOnly");
+			response.sendRedirect("events/admin");
 			return;
 		}
 

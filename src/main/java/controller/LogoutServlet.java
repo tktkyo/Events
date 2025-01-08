@@ -23,9 +23,4 @@ public class LogoutServlet extends HttpServlet {
    		request.getRequestDispatcher("/WEB-INF/view/logout.jsp")
 		.forward(request, response);
 	}
- // セッションを破棄
-   	HttpSession session = request.getSession();
-   	session.invalidate();
-
-   	request.getRequestDispatcher("/WEB-INF/view/logout.jsp") .forward(request, response);
-   	}
+}

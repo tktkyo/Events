@@ -15,7 +15,7 @@
 
 <body>
   <div class="container bg-white">
-    <form action="">
+    <form action="/events" method="post">
       <h1 class="eventh1">Events(管理者)</h1>
 
       <input type="text" value="春のお手入れ会">
@@ -46,9 +46,9 @@
 
       <p><input type="submit" value="登録"></p>
     </form>
-    <a href="<%= request.getContextPath() %>/logout.jsp">ログアウト</a>
+    <a href="<%= request.getContextPath() %>/logout">ログアウト</a>
   </div>
-  request.getRequestDispatcher("/WEB-INF/view/logout.jsp") .forward(request, response);
+  
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
