@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="css/style.css"> 
 </head> <body> 
 <div class="container bg-white">
-<form action="/eventsadmin" method="post"> 
+<form action="/eventsadmin" method="post"></form> 
 
 <h1 class="eventh1">Events(管理者)</h1> 
 <input type="text" name="eventName" value="春のお手入れ会"> 
@@ -44,7 +44,8 @@
 10,000円以上ご購入の場合 スターターキットミニ 
 30,000円以上ご購入の場合 デラックスサンプル(ポーチ付き) </textarea> 
 
-<p><input type="submit" value="登録"></p> 
+<form action="/Events/events"method="post">
+<button type"submit">登録</button>
 </form>
 
 <a href="<%= request.getContextPath() %>/logout">ログアウト</a> 
