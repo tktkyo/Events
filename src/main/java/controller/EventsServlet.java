@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.Events;
+
 /** 
  * * お客様が観る画面*/
 @WebServlet("/events")
@@ -29,26 +31,22 @@ public class EventsServlet extends HttpServlet {
 			return;
 		}
 		//画面の表示
-		request.getRequestDispatcher("WEB=INF/view/registewConf.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/events.jsp")
 		.forward(request, response);
-		
+	}
 		/**
 		* @see HttpServlet#doPost(HttpServletRequest request,
 		HttpServletResponse response)
 		*/
-		protected void doPost(HttpServletRequest requerequest, HttpServletResponse
+		protected void doPost(HttpServletRequest request, HttpServletResponse
 				response) throws ServletException, IOException {
 			
 			//セッションから登録内容を取り出す
 			HttpSession session =request.getSession();
 			Events events = (Events) session.getAttribute("events");
 			
-			//データベースに登録内容を保存する
-			System.out.println(evevts.neame);
-			System.out.println(events.date);
-			System.out.println(events.treatment);
-			System.out.println(events.gift);
-		}
+			
+		
 		//セッションの内容が不要になったので破棄する
 		session.invalidate();
 		
@@ -57,7 +55,7 @@ public class EventsServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/events.jsp").forward(request, response);
 
 		
-
+		
 	
 	}
 }
