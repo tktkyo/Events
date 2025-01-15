@@ -28,6 +28,10 @@ import javax.servlet.http.HttpSession;
    // セッションを破棄 
    HttpSession session = request.getSession(); 
    session.invalidate(); 
+   
+   //eventsページにリダイレクトする
+   response.sendRedirect(request.getContextPath() + "/events");
+   
    //ログアウトページにリダイレクトする
    response.sendRedirect(request.getContextPath() + "/logout");
    }
