@@ -53,7 +53,7 @@
        30,000円以上ご購入の場合
          デラックスサンプル(ポーチ付き)
       </textarea> 
-
+	<br>
 
 <button type="submit">登録</button>
 </form>
