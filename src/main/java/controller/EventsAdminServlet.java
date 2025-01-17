@@ -23,6 +23,25 @@ import dto.Events;
  ServletException, IOException 
  { request.setCharacterEncoding("UTF-8"); 
  
+ //セッションにログイン済みかを確認
+ HttpSession session = request.getSession();
+ if(session.getAttribute("login") == null) {
+ // ログイン済みでない
+ response.sendRedirect("login");
+ return;
+ }
+ boolean login = (boolean) session.getAttribute("login");
+ if(login != true) {
+ // ログイン済みでない
+ response.sendRedirect("login");
+ return;
+ }
+ else {
+ request.getRequestDispatcher("/WEB-INF/view/eventsadmins.jsp")
+ .forward(request, response);
+ }
+ 
+ 
 //入力値の取得
 		String name = request.getParameter("name");
 		String date = request.getParameter("date");
@@ -33,8 +52,8 @@ import dto.Events;
 		Events events =new Events(name,date,treatment,gift);
 		
 		//セッションに格納
-		HttpSession session =request.getSession();
-		session.setAttribute("Events",events);
+		HttpSession session1 =request.getSession();
+		session1.setAttribute("events",events);
 		
 		//EventsページにRedirect 
 		response.sendRedirect(request.getContextPath() + "/events");
