@@ -20,7 +20,7 @@
 
 <body>
 	<div class="container bg-white"
-		<form action="/eventsadmin" method="post">
+		<form action="" method="post">
 <h1 class="eventh1">Events(管理者)</h1>
 
 <h2>イベント名
