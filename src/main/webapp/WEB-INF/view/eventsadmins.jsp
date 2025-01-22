@@ -20,30 +20,40 @@
 
 <body>
 	<div class="container bg-white"
-		<form action="/eventsadmin" method="post">
+		<form action="" method="post">
 <h1 class="eventh1">Events(管理者)</h1>
 
 <h2>イベント名
-<input type="text" name="name" > 
+<input type="text" value="春のお手入れ会">
+
 </h2> 
 
 <img src="images/face-front.png"> 
 
-<h3>イベント日程
-<input type="text" name="date" >
-</h3> 
+<h3 id="イベント日程">イベント日程</h3>
+      <input type="text" value="2024-02-10 14:00~15:00"></td> 
  
-<h3>トリートメント内容
-<textarea name="treatment" cols="50" rows="10"> 
-</textarea>
-</h3> 
+<h3 id="トリートメント内容">トリートメント内容</h3>
+      <textarea cols="50" rows="10">
+ ハンドトリートメント
+   指先から肘まで/所要時間:約15分
+ フェイストリートメント
+   デコルテからおでこまで/所要時間:約30分
+ ボディトリートメント
+   全身/所要時間:所要時間:約90分
+ フットトリートメント
+   ひざ下からつま先まで/所要時間:約20分</textarea>
+
  
 
-<h3>ギフト
-<textarea name="gift" cols="50" rows="5"> 
- </textarea> 
-</h3> 
-
+<h3 id="ギフト">ギフト</h3>
+      <textarea cols="50" rows="5">
+       10,000円以上ご購入の場合
+         スターターキットミニ
+       30,000円以上ご購入の場合
+         デラックスサンプル(ポーチ付き)
+      </textarea> 
+	<br>
 
 <button type="submit">登録</button>
 </form>
