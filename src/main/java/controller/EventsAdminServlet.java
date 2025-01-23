@@ -36,9 +36,10 @@ public class EventsAdminServlet extends HttpServlet {
 
 		try (Connection con = DriverManager.getConnection(url, user, pass)) {
 			response.getWriter().append("Success");
-			// conを使いSQLを実行
-			
-		} catch (SQLException e) {
+						
+		}
+		
+		catch (SQLException e) {
 			response.getWriter().append("Error");
 			e.printStackTrace();
 		}
