@@ -18,15 +18,18 @@ import dto.Events;
 public class EventsAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	* @see HttpServlet#doGet(HttpServletRequest request,
-	HttpServletResponse response)
-	*/
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		//セッションにログイン済みかを確認
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login") == null) {
+			// ログイン済みでない
+			response.sendRedirect("login");
+			return;
+		}
+
 		// DB接続設定
-		String url = "jdbc:events://127.0.0.1:3306"
+		String url = "jdbc:mysql://127.0.0.1:3306"
 				+ "/events"
 				+ "?useUnicode=true"
 				+ "&characterEncoding=utf8"
@@ -35,33 +38,23 @@ public class EventsAdminServlet extends HttpServlet {
 		String pass = "";
 
 		try (Connection con = DriverManager.getConnection(url, user, pass)) {
-			response.getWriter().append("Success");
-						
-		}
-		
-		catch (SQLException e) {
-			response.getWriter().append("Error");
-			e.printStackTrace();
-		}
+			// DBからデータを取得
 
-		request.setCharacterEncoding("UTF-8");
+			// 取得したデータをリクエストスコープに格納
 
-		//セッションにログイン済みかを確認
-		HttpSession session = request.getSession();
-		if (session.getAttribute("login") == null) {
-			// ログイン済みでない
-			response.sendRedirect("login");
-			return;
-		}
-		boolean login = (boolean) session.getAttribute("login");
-		if (login != true) {
-			// ログイン済みでない
-			response.sendRedirect("login");
-			return;
-		} else {
+			// フォワード
 			request.getRequestDispatcher("/WEB-INF/view/eventsadmins.jsp")
 					.forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 文字化け防止
+		request.setCharacterEncoding("UTF-8");
 
 		//入力値の取得
 		String name = request.getParameter("name");
@@ -72,18 +65,22 @@ public class EventsAdminServlet extends HttpServlet {
 		//Eventsオブジェクトにまとめる
 		Events events = new Events(name, date, treatment, gift);
 
-		//セッションに格納
-		HttpSession session1 = request.getSession();
-		session1.setAttribute("events", events);
+		// DB接続設定
+		String url = "jdbc:mysql://127.0.0.1:3306"
+				+ "/events"
+				+ "?useUnicode=true"
+				+ "&characterEncoding=utf8"
+				+ "&serverTimezone=Asia/Tokyo";
+		String user = "root";
+		String pass = "";
 
-		//EventsページにRedirect 
-		response.sendRedirect(request.getContextPath() + "/events");
+		try (Connection con = DriverManager.getConnection(url, user, pass)) {
+			// DBにデータを保存
 
-		//jspをフォワード
-		request.getRequestDispatcher("/WEB-INF/view/eventsadmins.jsp")
-				.forward(request, response);
-
-		//ログアウトページにリダイレクトする
-		response.sendRedirect(request.getContextPath() + "/logout");
+			// フォームを再表示（⇒ リダイレクトして、doGetを呼び出す）
+			response.sendRedirect(request.getContextPath() + "/eventsadmin");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
