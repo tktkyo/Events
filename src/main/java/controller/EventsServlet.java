@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,19 +32,32 @@ public class EventsServlet extends HttpServlet {
 		//セッションに登録内容が未保存の時登録画面へリダイレクト
 		HttpSession session = request.getSession();
 		if(session.getAttribute("events") == null) {
-			response.sendRedirect("eventsadmin");
+			response.sendRedirect("events");
 			return;
 		}
-		
+
+		// DB接続設定
+				String url = "jdbc:mysql://127.0.0.1:3306/events?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo";
+				String user = "root";
+				String pass = "";
+
+				try (Connection con = DriverManager.getConnection(url, user, pass)) {
+					// DBからデータを取得
+					
+					// 取得したデータをリクエストスコープに格納
+
+					// フォワード
+					request.getRequestDispatcher("/WEB-INF/view/events.jsp")
+							.forward(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		// DBから取得
 		
 					// 取得したものをリクエストスコープに格納
 		
 		
-		//画面の表示
-		request.getRequestDispatcher("/WEB-INF/view/events.jsp")
-		.forward(request, response);
-	}
 		/**
 		* @see HttpServlet#doPost(HttpServletRequest request,
 		HttpServletResponse response)

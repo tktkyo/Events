@@ -2,7 +2,7 @@ package dto;
 
 public class Events {
 
-	private String name;
+	private String title;
 	private String date;
 	private String treatment;
 	private String gift;
@@ -11,20 +11,20 @@ public class Events {
 	public Events() {
 	}
 
-	public Events(String name, String date, String treatment, String gift) {
-		this.name = name;
+	public Events(String title, String date, String treatment, String gift) {
+		this.title = title;
 		this.date = date;
 		this.treatment = treatment;
 		this.gift = gift;
 	}
 
 	// アクセッサ
-	public String getName() {
-		return name;
+	public String geTitle() {
+		return date;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String Title) {
+		this.title = title;
 	}
 
 	public String getDate() {
