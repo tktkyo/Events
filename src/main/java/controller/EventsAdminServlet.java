@@ -6,8 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,24 +40,24 @@ public class EventsAdminServlet extends HttpServlet {
 		String pass = "";
 
 		try (Connection con = DriverManager.getConnection(url, user, pass)) {
-			// DBからデータを取得
+			// conを使ってSQLを実行　　DBからデータを取得
 			String sql = "SELECT * FROM events";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			List<Events> memberList = new ArrayList<>();
-			while(rs.next()) {
+			
+			
+			Events events = null;
+			if(rs.next()) {
 			Integer id = (Integer) rs.getObject("id");
 			String title = (String)rs.getObject("title");
 			String date = (String) rs.getObject("date");
 			String treatment= (String) rs.getObject("treatment");
 			String gift = (String) rs.getObject("gift");
 			
-			Events events = new Events(id, title,date,treatment);
-			eventsList.add(events);
 			}
 			// 取得したデータをリクエストスコープに格納
 			
-			request.setAttribute("eventsList", eventsList);
+			request.setAttribute("events", events);
 			
 			// フォワード
 			request.getRequestDispatcher("/WEB-INF/view/eventsadmins.jsp")
@@ -77,7 +75,7 @@ public class EventsAdminServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//入力値の取得
-		Integer id = request.getParameter("id");
+		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String date = request.getParameter("date");
 		String treatment = request.getParameter("treatment");

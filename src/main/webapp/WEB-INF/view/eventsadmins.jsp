@@ -20,10 +20,10 @@
 
 <body>
 	<div class="container bg-white"
-		<form action="" method="post">
+<form action="" method="post">
 <h1 class="eventh1">Events(管理者)</h1>
 
-イベント名
+<p>イベント名</p>
 <h2><input type="text" value="春のお手入れ会">
 
 </h2> 
@@ -57,7 +57,7 @@
 
 <button type="submit">登録</button>
 </form>
-		<a href="<%=request.getContextPath()%>/logout">ログアウト</a></div>
+		<a href="<%=request.getContextPath()%>/logout">ログアウト</a>
 
 </body>
 </html>
