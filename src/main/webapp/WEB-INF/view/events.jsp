@@ -16,10 +16,8 @@
         <div class="container bg-white">
 
             <div class="container-fluid">
-            <header>
-            <h1 class="eventh1">Events</h1>
-            </header>
-            <h2 class="eventh2">春のお手入れ会</h2>
+            >
+            <h1 class="eventh2">春のお手入れ会</h1>
             <img src="images/face-front.png">
             <p>
               <a href="#イベント日程">イベント日程</a>
@@ -27,15 +25,15 @@
                 <a href="#ギフト">ギフト</a>
             </p>
 
-            <h3>日程</h3>
+            <h2>日程</h2>
             <table class="table">
 
             <tr>
-               <td><p>2024-02-10 14:00~15:00</p></td>
+               <td><p>2025-02-10 14:00~15:00</p></td>
               </tr>
             </table>
             <table class="table">
-            <h3>トリートメント内容</h3>
+            <h2>トリートメント内容</h2>
             <p>
                   ハンドトリートメント<br>
                     指先から肘まで/所要時間:約15分<br>
@@ -48,7 +46,7 @@
             </p>
           </table>
             <table class="table">
-              <h3>ギフト</h3>
+              <h2>ギフト</h2>
               <p>
                  10,000円以上ご購入の場合<br>
                  スターターキットミニ<br>
@@ -56,7 +54,7 @@
                  デラックスサンプル(ポーチ付き)
               </p>
 
-
+ 
             <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

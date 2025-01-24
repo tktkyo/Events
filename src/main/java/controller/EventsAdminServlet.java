@@ -44,21 +44,20 @@ public class EventsAdminServlet extends HttpServlet {
 			String sql = "SELECT * FROM events";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			
-			
+
 			Events events = null;
-			if(rs.next()) {
-			Integer id = (Integer) rs.getObject("id");
-			String title = (String)rs.getObject("title");
-			String date = (String) rs.getObject("date");
-			String treatment= (String) rs.getObject("treatment");
-			String gift = (String) rs.getObject("gift");
-			
+			if (rs.next()) {
+				Integer id = (Integer) rs.getObject("id");
+				String title = (String) rs.getObject("title");
+				String date = (String) rs.getObject("date");
+				String treatment = (String) rs.getObject("treatment");
+				String gift = (String) rs.getObject("gift");
+
 			}
 			// 取得したデータをリクエストスコープに格納
-			
+
 			request.setAttribute("events", events);
-			
+
 			// フォワード
 			request.getRequestDispatcher("/WEB-INF/view/eventsadmins.jsp")
 					.forward(request, response);
@@ -75,14 +74,14 @@ public class EventsAdminServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		//入力値の取得
-		String id = request.getParameter("id");
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String date = request.getParameter("date");
 		String treatment = request.getParameter("treatment");
 		String gift = request.getParameter("gift");
 
 		//Eventsオブジェクトにまとめる
-		Events events = new Events(title, date, treatment, gift);
+		Events events = new Events(id, title, date, treatment, gift);
 
 		// DB接続設定
 		String url = "jdbc:mysql://127.0.0.1:3306/events?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo";
@@ -101,8 +100,7 @@ public class EventsAdminServlet extends HttpServlet {
 	}
 }
 
-
 //InitialContext ctx = new InitialContext();DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/events");try(Connection con1 = ds.getConnection()) {Integer id = null;String title ="イベント名";
-	//String date ="イベント日程";
-	//String treatment ="トリートメント内容";
-	//String gift = "ギフト内容";
+//String date ="イベント日程";
+//String treatment ="トリートメント内容";
+//String gift = "ギフト内容";
