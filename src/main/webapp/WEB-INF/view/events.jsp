@@ -32,9 +32,9 @@
                <td><p>2025-02-10 14:00~15:00</p></td>
               </tr>
             </table>
-            <table class="table">
+           
             <h2>トリートメント内容</h2>
-            <p>
+            <p> <table class=table>
                   ハンドトリートメント<br>
                     指先から肘まで/所要時間:約15分<br>
                   フェイストリートメント<br>
@@ -45,15 +45,15 @@
                      ひざ下からつま先まで/所要時間:約20分
             </p>
           </table>
-            <table class="table">
+           
               <h2>ギフト</h2>
-              <p>
+              <p table class=table>
                  10,000円以上ご購入の場合<br>
                  スターターキットミニ<br>
                  30,000円以上ご購入の場合<br>
                  デラックスサンプル(ポーチ付き)
               </p>
-
+				</table>
  
             <script src="js/bootstrap.bundle.min.js"></script>
 </body>

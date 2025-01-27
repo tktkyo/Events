@@ -89,10 +89,27 @@ public class EventsAdminServlet extends HttpServlet {
 		String pass = "";
 
 		try (Connection con = DriverManager.getConnection(url, user, pass)) {
-			// DBにデータを保存
+			// データベースにデータを保存するSQL文
+	        String sql = "INSERT INTO events (id, title, date, treatment, gift) VALUES (?, ?, ?, ?, ?)";
+	        PreparedStatement stmt = con.prepareStatement(sql);
+	        stmt.setInt(1, events.getId());
+	        stmt.setString(2, events.getTitle());
+	        stmt.setString(3, events.getDate());
+	        stmt.setString(4, events.getTreatment());
+	        stmt.setString(5, events.getGift());
+
+	        // SQL文の実行
+	        int result = stmt.executeUpdate();
+	        if (result > 0) {
+	            // データが正常に挿入された場合
+	            System.out.println("データが挿入されました");
+	        } else {
+	            // データが挿入されなかった場合
+	            System.out.println("データの挿入に失敗しました");
+	        }
 
 			// フォームを再表示（⇒ リダイレクトして、doGetを呼び出す）
-			response.sendRedirect(request.getContextPath() + "/eventsadmin");
+			response.sendRedirect(request.getContextPath() + "eventsadmin.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("未接続");
