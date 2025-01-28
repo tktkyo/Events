@@ -44,7 +44,8 @@ public class EventsAdminServlet extends HttpServlet {
 			String sql = "SELECT * FROM events";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-
+			
+			
 			Events events = null;
 			if (rs.next()) {
 				Integer id = (Integer) rs.getObject("id");
@@ -52,7 +53,8 @@ public class EventsAdminServlet extends HttpServlet {
 				String date = (String) rs.getObject("date");
 				String treatment = (String) rs.getObject("treatment");
 				String gift = (String) rs.getObject("gift");
-
+				
+				events = new Events(id, title, date, treatment, gift);
 			}
 			// 取得したデータをリクエストスコープに格納
 
@@ -79,6 +81,7 @@ public class EventsAdminServlet extends HttpServlet {
 		String date = request.getParameter("date");
 		String treatment = request.getParameter("treatment");
 		String gift = request.getParameter("gift");
+		
 
 		//Eventsオブジェクトにまとめる
 		Events events = new Events(id, title, date, treatment, gift);
