@@ -19,43 +19,33 @@
 </head>
 
 <body>
-	<div class="container bg-white"
+	<div class="container bg-white">
 		<form action="" method="post">
-	<h2 class="eventh1">Events(管理者)</h2>
-
-<h3 id="イベント名">イベント名
-<input type="text" value="春のお手入れ会" name="title">
-</h3>
-
-<img src="images/face-front.png"> 
-
-<h3 id="イベント日程">イベント日程</h3>
-      <input type="text" value="2025-02-10 14:00~15:00" name="date"></td> 
- 
-<h3 id="トリートメント内容">トリートメント内容</h3>
-      <textarea cols="50" rows="10" name="treatment">
- ハンドトリートメント
-   指先から肘まで/所要時間:約15分
- フェイストリートメント
-   デコルテからおでこまで/所要時間:約30分
- ボディトリートメント
-   全身/所要時間:所要時間:約90分
- フットトリートメント
-   ひざ下からつま先まで/所要時間:約20分</textarea>
-
- 
-
-<h3 id="ギフト">ギフト</h3>
-      <textarea cols="50" rows="5" name="gift">
-       10,000円以上ご購入の場合
-         スターターキットミニ
-       30,000円以上ご購入の場合
-         デラックスサンプル(ポーチ付き)
-      </textarea> 
-	<br>
-
-<button type="submit" >登録</button>
-</form>
+			<h2 class="eventh1">Events(管理者)</h2>
+		
+			<h3 id="イベント名">イベント名
+			<input type="text" value="${events.title}" name="title">
+			</h3>
+			
+			<img src="images/face-front.png"> 
+			
+			<h3 id="イベント日程">イベント日程</h3>
+			      <input type="text" value="${events.date}" name="date"></td> 
+			 
+			<h3 id="トリートメント内容">トリートメント内容</h3>
+			      <textarea cols="50" rows="10" name="treatment">
+			 ${events.treatment}</textarea>
+			
+			 
+			
+			<h3 id="ギフト">ギフト</h3>
+			      <textarea cols="50" rows="5" name="gift">
+			       ${events.gift}
+			      </textarea> 
+				<br>
+			<input type="submit" value="登録">
+		</form>
 		<a href="<%=request.getContextPath()%>/logout">ログアウト</a>
+	</div>
 </body>
 </html>

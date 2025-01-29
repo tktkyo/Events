@@ -25,7 +25,7 @@
                 <a href="#ギフト">ギフト</a>
             </p>
 
-            <h2>日程</h2>
+            <h2 class="eventh2">日程</h2>
             <table class="table">
 
             <tr>
@@ -33,7 +33,7 @@
               </tr>
             </table>
            
-            <h2>トリートメント内容</h2>
+            <h2 class="eventh2">トリートメント内容</h2>
             <p> <table class=table>
                   ハンドトリートメント<br>
                     指先から肘まで/所要時間:約15分<br>
@@ -46,7 +46,7 @@
             </p>
           </table>
            
-              <h2>ギフト</h2>
+              <h2 class="eventh2">ギフト</h2>
               <p table class=table>
                  10,000円以上ご購入の場合<br>
                  スターターキットミニ<br>

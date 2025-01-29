@@ -22,6 +22,7 @@ public class EventsAdminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(0);
 		//セッションにログイン済みかを確認
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login") == null) {
@@ -72,19 +73,18 @@ public class EventsAdminServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(1);
 		// 文字化け防止
 		request.setCharacterEncoding("UTF-8");
 
 		//入力値の取得
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		//Integer id = Integer.parseInt(request.getParameter("id"));
+		Integer id = 1;
 		String title = request.getParameter("title");
 		String date = request.getParameter("date");
 		String treatment = request.getParameter("treatment");
 		String gift = request.getParameter("gift");
 		
-
-		//Eventsオブジェクトにまとめる
-		Events events = new Events(id, title, date, treatment, gift);
 
 		// DB接続設定
 		String url = "jdbc:mysql://127.0.0.1:3306/events?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Tokyo";
@@ -93,26 +93,21 @@ public class EventsAdminServlet extends HttpServlet {
 
 		try (Connection con = DriverManager.getConnection(url, user, pass)) {
 			// データベースにデータを保存するSQL文
-	        String sql = "INSERT INTO events (id, title, date, treatment, gift) VALUES (?, ?, ?, ?, ?)";
-	        PreparedStatement stmt = con.prepareStatement(sql);
-	        stmt.setInt(1, events.getId());
-	        stmt.setString(2, events.getTitle());
-	        stmt.setString(3, events.getDate());
-	        stmt.setString(4, events.getTreatment());
-	        stmt.setString(5, events.getGift());
-
+			String sql ="UPDATE events SET title=?,date=?,treatment=?,gift=? WHERE id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			
+			stmt.setString(1,title);
+			stmt.setString(2,date);
+			stmt.setString(3,treatment);
+			stmt.setString(4,gift);
+			stmt.setInt(5, id);
+			
 	        // SQL文の実行
-	        int result = stmt.executeUpdate();
-	        if (result > 0) {
-	            // データが正常に挿入された場合
-	            System.out.println("データが挿入されました");
-	        } else {
-	            // データが挿入されなかった場合
-	            System.out.println("データの挿入に失敗しました");
-	        }
+			stmt.executeUpdate();
+	        
 
 			// フォームを再表示（⇒ リダイレクトして、doGetを呼び出す）
-			response.sendRedirect(request.getContextPath() + "eventsadmin.jsp");
+			response.sendRedirect(request.getContextPath() + "/eventsadmin");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("未接続");
