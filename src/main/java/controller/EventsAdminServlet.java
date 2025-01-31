@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  { request.setCharacterEncoding("UTF-8"); 
  
  //必要な処理を行う
-   request.getRequestDispatcher("/eventsadmins") 
+   request.getRequestDispatcher("/WEB-INF/view/eventsadmins") 
    .forward(request, response); 
    // セッションを破棄 
    HttpSession session = request.getSession(); 
